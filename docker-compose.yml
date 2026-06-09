@@ -1,0 +1,22 @@
+services:
+  web:
+    container_name: notes-php
+    build: ./php
+    ports:
+      - "8080:80"
+    networks:
+      - app-network
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: "Kotik4916" 
+    ports:
+      - "3306:3306"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
