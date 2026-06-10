@@ -5,7 +5,7 @@
         $age = htmlentities($_POST["Age"]);
 
         try {
-            $conn = new PDO("mysql:host=mysql_db;dbname=usersdb", "root", "Kotik4916");
+            $conn = require "config/database.php";
 
             $preparedQuery = $conn->prepare("INSERT INTO users (Name, Age) VALUES (:name, :age)");
 

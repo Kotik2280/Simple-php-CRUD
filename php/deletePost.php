@@ -5,7 +5,7 @@
         $name = htmlentities($_POST["Name"]);
 
         try {
-            $conn = new PDO("mysql:host=mysql_db;dbname=usersdb", "root", "Kotik4916");
+            $conn = require "config/database.php";
 
             $preparedQueryCount = $conn->prepare("SELECT * FROM users WHERE id=:id");
 

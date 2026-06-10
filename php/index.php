@@ -10,7 +10,7 @@
 
     <?php
     try {
-        $conn = new PDO("mysql:host=mysql_db;dbname=usersdb", "root", "Kotik4916");
+        $conn = require "config/database.php";
         $result = $conn->query("select * from users");
     }
     catch (PDOException $e) {

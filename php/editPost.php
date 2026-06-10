@@ -5,7 +5,7 @@
         $Age = $_POST["Age"];
     
         try {
-            $conn = new PDO("mysql:host=mysql_db;dbname=usersdb", "root", "Kotik4916");
+            $conn = require "config/database.php";
 
             $checkQuery = $conn->prepare("SELECT * FROM users WHERE id = :id");
             $checkQuery->bindValue(":id", $id);
