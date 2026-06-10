@@ -7,13 +7,13 @@
         try {
             $conn = require "config/database.php";
 
-            $preparedQueryCount = $conn->prepare("SELECT * FROM users WHERE id=:id");
+            $preparedQueryCount = $conn->prepare("SELECT COUNT(*) FROM users WHERE id=:id");
 
             $preparedQueryCount->bindValue(":id", $id);
 
-            $resultsCount = $preparedQueryCount->execute();
+            $preparedQueryCount->execute();
 
-            if ($resultsCount = 1) {
+            if ($preparedQueryCount->fetchColumn()) {
                 $preparedQueryDelete = $conn->prepare("DELETE FROM users WHERE id=:id");
 
                 $preparedQueryDelete->bindValue(":id", $id);
@@ -26,7 +26,7 @@
                 echo "Такого пользователя не существует!";
             }
         }
-        catch (PDOExcetion $e) {
+        catch (PDOException $e) {
             echo "Ошибка удаления пользователя: " . $e->getMessage();
         }
     }

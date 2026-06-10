@@ -8,19 +8,21 @@ services:
       - app-network
     environment:
       DB_HOST: mysql_db
-      DB_NAME: usersdb
+      DB_NAME: users_db
       DB_USER: root
-      DB_PASSWORD: Kotik4916
+      DB_PASSWORD: mypassword
 
   mysql:
     image: mysql:latest
     container_name: mysql_db
     environment:
-      MYSQL_ROOT_PASSWORD: Kotik4916
+      MYSQL_ROOT_PASSWORD: mypassword
     ports:
       - "3306:3306"
     networks:
       - app-network
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
 
 networks:
   app-network:

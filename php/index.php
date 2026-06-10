@@ -31,16 +31,16 @@
     while ($row = $result->fetch()) {
     ?>
         <tr>
-            <td> <? echo $row["id"] ?> </td>
-            <td> <? echo $row["Name"] ?> </td>
-            <td> <? echo $row["Age"] ?> </td>
+            <td> <?= $row["id"] ?> </td>
+            <td> <?= $row["Name"] ?> </td>
+            <td> <?= $row["Age"] ?> </td>
             <td>
-                <a href="editForm.php?id=<? echo $row["id"] ?>&oldName=<? echo $row["Name"] ?>&oldAge=<? echo $row["Age"] ?>">Изменить</a>
+                <a href="editForm.php?id=<?= $row["id"] ?>&oldName=<?= $row["Name"] ?>&oldAge=<?= $row["Age"] ?>">Изменить</a>
             </td>
             <td> 
                 <form action="deletePost.php" method="POST">
-                    <input name="Name" type="hidden" value="<?php echo $row["Name"] ?>">
-                    <input name="id" type="hidden" value="<?php echo $row["id"] ?>">
+                    <input name="Name" type="hidden" value="<?= $row["Name"] ?>">
+                    <input name="id" type="hidden" value="<?= $row["id"] ?>">
                     <input type="submit" value="Удалить">
                 </form> 
             </td>
