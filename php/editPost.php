@@ -4,33 +4,38 @@
         $Name = $_POST["Name"];
         $Age = $_POST["Age"];
     
-        try {
-            $conn = require "config/database.php";
+        if (is_numeric($Age)) {
+            try {
+                $conn = require "config/database.php";
 
-            $checkQuery = $conn->prepare("SELECT * FROM users WHERE id = :id");
-            $checkQuery->bindValue(":id", $id);
-            $checkQuery->execute();
+                $checkQuery = $conn->prepare("SELECT * FROM users WHERE id = :id");
+                $checkQuery->bindValue(":id", $id);
+                $checkQuery->execute();
 
-            if ($row = $checkQuery->fetch()) {
-                $oldName = $row["Name"];
-                $oldAge = $row["Age"];
+                if ($row = $checkQuery->fetch()) {
+                    $oldName = $row["Name"];
+                    $oldAge = $row["Age"];
 
-                $preparedQuery = $conn->prepare("UPDATE users SET Name = :name, Age = :age WHERE id = :id");
+                    $preparedQuery = $conn->prepare("UPDATE users SET Name = :name, Age = :age WHERE id = :id");
 
-                $preparedQuery->bindValue(":name", $Name);
-                $preparedQuery->bindValue(":age", $Age);
-                $preparedQuery->bindValue(":id", $id);
+                    $preparedQuery->bindValue(":name", $Name);
+                    $preparedQuery->bindValue(":age", $Age);
+                    $preparedQuery->bindValue(":id", $id);
 
-                $preparedQuery->execute();
+                    $preparedQuery->execute();
 
-                echo "Пользователь $oldName $oldAge лет успешно изменён на $Name $Age лет";
+                    echo "Пользователь $oldName $oldAge лет успешно изменён на $Name $Age лет";
+                }
+                else {
+                    echo "Пользователь с указанным идентификатором не найден!";
+                }
             }
-            else {
-                echo "Пользователь с указанным идентификатором не найден!";
+            catch (PDOException $e) {
+                echo "Ошибка редактирования данных: " . $e->getMessage();
             }
         }
-        catch (PDOException $e) {
-            echo "Ошибка редактирования данных: " . $e->getMessage();
+        else {
+            echo "В поле возраста нужно записать число";
         }
     }
     else {

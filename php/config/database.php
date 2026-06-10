@@ -1,7 +1,7 @@
 <?php
     return new PDO(
-        "mysql:host=mysql_db;dbname=usersdb", 
-        "root", 
-        "Kotik4916"
+        "mysql:host=" . $_ENV["DB_HOST"] . ";dbname=" . $_ENV["DB_NAME"], 
+        $_ENV["DB_USER"], 
+        $_ENV["DB_PASSWORD"]
     );
 ?>
