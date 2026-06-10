@@ -7,8 +7,6 @@
 <form action="editPost.php" method="POST" >
     <h3>Редактирование пользователя</h3>
     <input name="id" type="hidden" value="<? echo $id ?>">
-    <input name="oldName" type="hidden" value="<? echo $oldName ?>">
-    <input name="oldAge" type="hidden" value="<? echo $oldAge ?>">
     <p>
         Name: <input name="Name" type="text" value="<? echo $oldName ?>">
     </p>
