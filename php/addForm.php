@@ -13,3 +13,4 @@
         <input type="submit" value="Добавить">
     </p>
 </form>
+<a href="index.php">На главную</a>

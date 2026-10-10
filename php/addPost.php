@@ -5,20 +5,25 @@
         $age = htmlentities($_POST["Age"]);
 
         if (is_numeric($age)) {
-            try {
-                $conn = require "config/database.php";
+            if ($age > 0 && $age <= 120) {
+                try {
+                    $conn = require "config/database.php";
 
-                $preparedQuery = $conn->prepare("INSERT INTO users (Name, Age) VALUES (:name, :age)");
+                    $preparedQuery = $conn->prepare("INSERT INTO users (Name, Age) VALUES (:name, :age)");
 
-                $preparedQuery->bindValue(":name", $name);
-                $preparedQuery->bindValue(":age", $age);
+                    $preparedQuery->bindValue(":name", $name);
+                    $preparedQuery->bindValue(":age", $age);
 
-                $preparedQuery->execute();
+                    $preparedQuery->execute();
 
-                echo "Пользователь $name успешно добавлен!";
+                    echo "Пользователь $name успешно добавлен!";
+                }
+                catch (PDOException $e) {
+                    echo "Ошибка mysql: " . $e->getMessage();
+                }
             }
-            catch (PDOException $e) {
-                echo "Ошибка mysql: " . $e->getMessage();
+            else {
+                echo "Возраст должен быть от 1 до 120 лет";
             }
         }
         else {

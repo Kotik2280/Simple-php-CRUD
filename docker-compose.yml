@@ -13,7 +13,7 @@ services:
       DB_PASSWORD: mypassword
 
   mysql:
-    image: mysql:latest
+    image: mysql:8.4
     container_name: mysql_db
     environment:
       MYSQL_ROOT_PASSWORD: mypassword
