@@ -1,16 +1,30 @@
-<form action="addPost.php" method="post">
+<?php include 'templates/header.php'; ?>
+
+<form action="addPost.php" method="post" class="form">
     <h3>Добавить пользователя</h3>
 
     <p>
-        Name: <input name="Name" type="text">
+        Name
+        <br>
+        <input name="Name" type="text">
     </p>
 
     <p>
-        Age: <input name="Age" type="text">
+        Age
+        <br>
+        <input name="Age" type="text">
     </p>
 
     <p>
-        <input type="submit" value="Добавить">
+        <input class="formSender" type="submit" value="Добавить">
+    </p>
+
+    <p>
+        <a href="index.php">На главную</a>
     </p>
 </form>
-<a href="index.php">На главную</a>
+
+
+
+
+<?php include 'templates/footer.php'; ?>

@@ -11,6 +11,8 @@ services:
       DB_NAME: users_db
       DB_USER: root
       DB_PASSWORD: mypassword
+    volumes:
+      - ./php:/var/www/html
 
   mysql:
     image: mysql:8.4

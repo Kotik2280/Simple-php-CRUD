@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Document</title>
-</head>
-<body>
-    <a href="addForm.php">Добавить пользователя</a>
+<?php include 'templates/header.php'; ?>
+    <p>
+        <a href="addForm.php">Добавить пользователя</a>
+    </p>
+    
 
     <?php
     try {
@@ -28,9 +23,9 @@
     <table>
 
     <tr>
-    <td>Id</td>
-    <td>Name</td>
-    <td>Age</td>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Age</th>
     </tr>
 
     <?php
@@ -49,14 +44,14 @@
                     <td> <?= $row["id"] ?> </td>
                     <td> <?= $row["Name"] ?> </td>
                     <td> <?= $row["Age"] ?> </td>
-                    <td>
+                    <td class="notCell">
                         <a href="editForm.php?id=<?= $row["id"] ?>&oldName=<?= $row["Name"] ?>&oldAge=<?= $row["Age"] ?>">Изменить</a>
                     </td>
-                    <td> 
+                    <td class="notCell"> 
                         <form action="deletePost.php" method="POST">
                             <input name="Name" type="hidden" value="<?= $row["Name"] ?>">
                             <input name="id" type="hidden" value="<?= $row["id"] ?>">
-                            <input type="submit" value="Удалить">
+                            <input class="danger" type="submit" value="Удалить">
                         </form> 
                     </td>
                 </tr>
@@ -65,6 +60,5 @@
             echo "</table>";
         }
     ?>
-    
-</body>
-</html>
+
+<?php include 'templates/footer.php'; ?>

@@ -1,3 +1,5 @@
+<?php include 'templates/header.php'; ?>
+
 <?php
     if (isset($_POST["Name"]) && isset($_POST["Age"])) {
     
@@ -35,4 +37,9 @@
     }
 ?>
 <br>
-<a href="index.php">На главную</a>
+<p>
+    <a href="index.php">На главную</a>
+</p>
+
+
+<?php include 'templates/footer.php'; ?>
